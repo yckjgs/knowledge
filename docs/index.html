@@ -7,11 +7,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="Description">
 		<!-- 设置浏览器图标 -->
-		<link rel="icon" href="https://librarycodes.gitee.io/docsify-plus/img/logo.ico" type="image/x-icon" />
-		<link rel="shortcut icon" href="https://librarycodes.gitee.io/docsify-plus/img/logo.ico" type="image/x-icon" />
+		<link rel="icon" href="../assets/imgs/kgy.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="../assets/imgs/kgy.ico" type="image/x-icon" />
 		<!-- 默认主题 -->
 		<link rel="stylesheet" href="//fastly.jsdelivr.net/npm/docsify/lib/themes/vue.css">
 		<!-- <link rel="stylesheet" href="//fastly.jsdelivr.net/npm/docsify/lib/themes/vue.css" /> -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
+		<link rel="stylesheet" href="../assets/css/base.css">
 	</head>
 	<body>
 		<div data-app id="app">加载中</div>
@@ -20,18 +22,24 @@
 				el: '#app',
 				// 项目名称
 				name: 'Docsify-Plus文档',
+				themeColor: '#3F51B5',
 				// 项目图标
-				// logo: '/img/icon.svg',
+				//logo: '../assets/imgs/icon.svg',
 				// 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
 				repo: 'https://gitee.com/librarycodes/docsify-plus',
 				// 封面支持，默认加载的是项目根目录下的_coverpage.md文件
 				coverpage: true,
 				// 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
 				loadSidebar: true,
+				alias: {
+				  '/.*/_sidebar.md': '/_sidebar.md',
+				},
+				subMaxLevel: 3,
+				sidebarDisplayLevel: 0, // set sidebar display level
 				// 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
 				//loadNavbar: true,
 				// 最大支持渲染的标题层级
-				maxLevel: 5,
+				maxLevel: 6,
 				// 自定义侧边栏后默认不会再生成目录，设置生成目录的最大层级（建议配置为2-4）
 				subMaxLevel: 4,
 				// 小屏设备下合并导航栏到侧边栏
@@ -63,8 +71,23 @@
 				},
 				// 目标是在 markdown 中打开外部链接。默认'_blank'（新窗口/标签）
 				externalLinkTarget: '_blank', // default: '_blank' '_self'
+				scrollToTop: {
+					auto: true,
+					//text: 'Top',
+					icon: 'arrow-up-2',
+					right: 15,
+					bottom: 15,
+					width: 50,
+					height: 40,
+					offset: 500
+				},
+				hideCode: {
+					scroll: false, // Enable scrolling
+					height: 300 // Max height
+				}
 			}
 		</script>
+
 		<!-- docsify的js依赖 -->
 		<script src="//fastly.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 		<!-- emoji表情支持 -->
@@ -84,5 +107,17 @@
 		<script src="//fastly.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
 		<script src="//fastly.jsdelivr.net/npm/prismjs@1.24.1/components/prism-java.min.js"></script>
 		<script src="//fastly.jsdelivr.net/npm/prismjs@1.24.1/components/prism-python.min.js"></script>
+		<!-- scroll-to-top插件：滚动到页面顶部 -->
+		<script src="//unpkg.com/@zhg-x/docsify-plugins@1.0.2/src/scroll-to-top.js"></script>
+		<!-- docsify侧边栏折叠 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+		<!-- docsify-hide-code -->
+		<script src="https://cdn.jsdelivr.net/npm/docsify-hide-code/dist/docsify-hide-code.min.js"></script>
+		<!- -设置离线模式 -->
+		<script type="text/javascript">
+		  if (typeof navigator.serviceWorker !== 'undefined') {
+			navigator.serviceWorker.register('sw.js')
+		  }
+		</script>
 	</body>
 </html>

@@ -1,0 +1,16 @@
+body {font-size: 12px;}
+.anchor span {color: #42b983;}
+.content {padding-top: 12px;left: 225px;}
+/* .markdown-section h3 {font-size: 1.2rem; margin: 20px 0 0.8rem;} */
+.sidebar-nav ul:not(.app-sub-sidebar)>li::before {top: 5px;}
+.sidebar ul li a {
+	font-size: 12px;
+}
+
+/*重设代码块样式*/
+.markdown-section pre {
+	padding: 0 0.2rem;
+}
+.markdown-section pre>code {
+	padding: 0.8em 5px;
+}
