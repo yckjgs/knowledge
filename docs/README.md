@@ -59,8 +59,8 @@ docsify serve -p 80 docs #指定端口运行
 ## Git代码提交命令
 ```
 git add . #加当前目录的所有文件到暂存区
-git commit -m [页面优化] #提交暂存区到仓库区
-git push origin pro #推送代码到远程仓库
+git commit -m [文档更新] #提交暂存区到仓库区
+git push origin master #推送代码到远程仓库
 ```
 
 ## 安装插件
