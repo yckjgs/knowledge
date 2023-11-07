@@ -56,5 +56,7 @@ Path  E:\Install\NodeJs\nvm\node_global
 >npm install yarn -g
 yarn -v
 yarn config list
+
 ![Yarn安装](../../assets/imgs/front/32b68f22286c486ca7688db871dd9cb0.png)
+
 ![Yarn使用方法](../../assets/imgs/front/734a6c113b064b0ca5f3df3f16dbde2e.png)
