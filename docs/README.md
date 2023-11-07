@@ -62,6 +62,14 @@ git add . #加当前目录的所有文件到暂存区
 git commit -m [文档更新] #提交暂存区到仓库区
 git push origin master #推送代码到远程仓库
 ```
+设置git可以同时推送gitee和github
+```
+git remote -v #查看当前的远程仓库设置
+git remote add origin-github <github仓库地址> #新增一个远程仓库
+#分别推送到不同的仓库
+git push origin master
+git push origin-github master
+```
 
 ## 安装插件
 [docsify-sidebar-collapse插件:侧边栏折叠](https://github.com/iPeng6/docsify-sidebar-collapse)
