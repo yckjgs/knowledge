@@ -72,6 +72,4 @@ git push origin-github master
 ```
 
 ## 安装插件
-[docsify-sidebar-collapse插件:侧边栏折叠](https://github.com/iPeng6/docsify-sidebar-collapse)
-
-[scroll-to-top插件:滚动到页面顶部](https://gitee.com/zhangx_study/docsify-plugins)
+[[docsify-sidebar-collapse插件:侧边栏折叠]](https://github.com/iPeng6/docsify-sidebar-collapse) / [[scroll-to-top插件:滚动到页面顶部]](https://gitee.com/zhangx_study/docsify-plugins)
