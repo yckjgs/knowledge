@@ -1,10 +1,12 @@
 ## 一、nvm是什么？
-?>在工作中，我们可能个或者多个不同的项目开发，每个项目的需求不同，进而不同项目必须依赖不同版本的NodeJS运行环境，这种情况下，对于维护多个版本的node将会是一件非常麻烦的事情，nvm就是为解决这个问题而产生的，他可以方便的在同一台设备上进行多个node版本之间切换。
+> 在工作中，我们可能个或者多个不同的项目开发，每个项目的需求不同，进而不同项目必须依赖不同版本的NodeJS运行环境，这种情况下，对于维护多个版本的node将会是一件非常麻烦的事情，nvm就是为解决这个问题而产生的，他可以方便的在同一台设备上进行多个node版本之间切换。
+
 ## 二、nodejs是什么？
 >简单的说 Node.js 就是运行在服务端的 JavaScript。Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
 ## 三、根据nvm安装nodejs？
 ### 1、下载安装
 [nvm安装包下载地址](https://github.com/coreybutler/nvm-windows/releases)，windows系统下载nvm-setup.zip安装包![NVM下载](../../assets/imgs/front/6c9a04887b7a40b1946afbd5391ddff2.png)
+
 ### 2、配置代理环境
 在安装路径下的setting.txt中配置淘宝的下载代理，配置内容如下：
 ```
