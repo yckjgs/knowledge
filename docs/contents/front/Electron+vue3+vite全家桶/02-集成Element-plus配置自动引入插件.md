@@ -1,5 +1,4 @@
-# 一、集成[Element-plus](https://element-plus.youqua.cn/zh-CN/guide/quickstart.html)配置自动导入
-
+## 一、集成[Element-plus](https://element-plus.youqua.cn/zh-CN/guide/quickstart.html)配置自动导入
 【1】安装依赖
 
 ```
@@ -61,7 +60,7 @@ Components({
 }),
 ```
 
-# 二、按需引入element-plus图标
+## 二、按需引入element-plus图标
 
 【1】安装依赖
 
