@@ -41,7 +41,7 @@ export default defineConfig({
 
 移除App.vue中HelloWorld组件导入，重启项目后根目录下面会多出两个自动导入的ts声明文件：
 
-![image-20241107183744689](C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20241107183744689.png)
+![image-20241107183744689](../../../assets/imgs/front/20241107183744689.png)
 
 在components.d.ts中可以看到已自动导入了HelloWorld组件，所以依靠两个插件已经实现了[vue组件](https://so.csdn.net/so/search?q=vue组件&spm=1001.2101.3001.7020)的自动引入和element的按需引入。
 
@@ -118,4 +118,4 @@ plugins: [
 </el-icon>
 ```
 
-![image-20241107190253592](C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20241107190253592.png)
+![image-20241107190253592](../../../assets/imgs/front/20241107190253592.png)
