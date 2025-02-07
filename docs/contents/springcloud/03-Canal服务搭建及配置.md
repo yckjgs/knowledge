@@ -1,7 +1,7 @@
 ## Canal介绍
-!>一般在统计分析功能中，我们会采取Feign服务调用获取统计数据，这样耦合度高，效率相对较低，目前采取另一种实现方式，通过实时同步数据库表的方式实现，例如我们要统计每天注册与登录人数，我们只需把会员表同步到统计库中，实现本地统计就可以了，这样效率更高，耦合度更低，Canal就是一个很好的数据库同步工具。canal是阿里巴巴旗下的一款开源项目，纯Java开发。基于数据库增量日志解析，提供增量数据订阅&消费，目前主要支持了MySQL。  
+> 一般在统计分析功能中，我们会采取Feign服务调用获取统计数据，这样耦合度高，效率相对较低，目前采取另一种实现方式，通过实时同步数据库表的方式实现，例如我们要统计每天注册与登录人数，我们只需把会员表同步到统计库中，实现本地统计就可以了，这样效率更高，耦合度更低，Canal就是一个很好的数据库同步工具。canal是阿里巴巴旗下的一款开源项目，纯Java开发。基于数据库增量日志解析，提供增量数据订阅&消费，目前主要支持了MySQL。  
 
-![Canal原理图](../../assets/imgs/springclound/2443180-20230611162747756-3178006.png)  
+ ![Canal原理图](../../assets/imgs/springcloud/2443180-20230611162747756-3178006.png)  
 `canal的原理是基于mysql binlog技术`，所以这里一定需要开启mysql的binlog写入功能。
 
 ### 检查是否开启binlog功能
@@ -23,7 +23,7 @@ binlog_format=ROW #选择 ROW 模式
 server-id=1000 #配置 MySQL replaction需要定义，不要和canal的slaveId重复。
 #重启mysql
 restart mysqld
-```   
+```
 
 binlog命令行参数详解：  
 >log-bin [=file_name] 此参数表示启用binlog日志功能，并可以定制文件名称，默认为mysql-bin。存放目录是mysql安装目录的data文件夹下。  
@@ -59,8 +59,9 @@ canal-admin：canal控制台，可以统一管理canal服务。
 canal-deployer：也是canal-server：canal的一个节点服务。  
 canal-instance：canal-server中的一个处理实例，可以处理不同的业务逻辑。  
 canal-adaper：canal适配器，canal 1.1.1之后，提供了适配器功能，可将canal server的数据直接输出到目的地，不需要用户编写客户端（个性化需求还需要用户编写客户端实现）  
-![图](../../assets/imgs/springclound/2443180-20230617192938033-437628983.png)
+![图](../../assets/imgs/springcloud/2443180-20230617192938033-437628983.png)
 [下载地址：https://github.com/alibaba/canal/releases](https://github.com/alibaba/canal/releases)
+
 ```
 #进入安装包
 cd /opt/canal
@@ -81,7 +82,7 @@ SQL脚本位置：conf/canal_manager.sql
 #### 替换mysql connector
 因为我是用的mysql8.0，而canal-admin中默认提供的驱动器是mysql5.0的，因此要替换一下（canal-admin解压目录的lib文件夹），同时确认是否需要授权（Linux下可能需要有权限）
 下载地址：https://dev.mysql.com/downloads/connector/j/  
-![图](../../assets/imgs/springclound/2443180-20230617112728071-1239694335.png)
+![图](../../assets/imgs/springcloud/2443180-20230617112728071-1239694335.png)
 
 #### 修改配置文件
 conf/application.yml
@@ -117,12 +118,12 @@ canal:
 2023-06-17 13:53:04.350 [main] INFO  com.alibaba.otter.canal.admin.CanalAdminApplication - Started CanalAdminApplication in 4.537 seconds (JVM running for 5.09)
 ```
 启动成功后，访问：http://127.0.0.1:8089/，输入默认账号admin/123456
-![图](../../assets/imgs/springclound/2443180-20230617135724967-32322599.png)
+![图](../../assets/imgs/springcloud/2443180-20230617135724967-32322599.png)
 
 #### 集群管理
 在集群管理中，点击新建集群，新建一个集群配置。这里的zk地址就是服务端集群的zk地址。
 Canal的集群原理是指如何将多个Canal节点组成一个集群,以提高系统的可用性和扩展性。
-![图](../../assets/imgs/springclound/2443180-20230617141004346-1976133956.png)
+![图](../../assets/imgs/springcloud/2443180-20230617141004346-1976133956.png)
 
 `注意：如果数据库的canal用户权限受限，是无法成功保存集群信息的，此时需要为canal用户重新授权，并重新启动canal-admin。`
 
@@ -169,12 +170,13 @@ tailf logs/canal/canal.log #查看启动日志
 
 #### 管理端admin配置
 一般情况server启动后会自动注册到admin中。
-![图](../../assets/imgs/springclound/2443180-20230617212712301-45328293.png)  
+![图](../../assets/imgs/springcloud/2443180-20230617212712301-45328293.png)  
 如果没有自动注册的话，就点击“新建Server”手动添加一下
-![图](../../assets/imgs/springclound/2443180-20230617160207007-408502699.png)  
+ ![图](../../assets/imgs/springcloud/2443180-20230617160207007-408502699.png)  
 之后我们就可以在【操作-日志】中查看到server的日志情况
-![图](../../assets/imgs/springclound/2443180-20230617202518115-934194837.png)  
+![图](../../assets/imgs/springcloud/2443180-20230617202518115-934194837.png)  
 网上有朋友遇到以下问题，那是因为jdk的版本问题。canal1.1.5使用jdk1.8即可，我使用的是canal1.1.6，该版本需要使用jdk11+，否则会报错NoSuchMethodError。
+
 ```
 java.lang.NoSuchMethodError: java.nio.ByteBuffer.clear()Ljava/nio/ByteBuffer;
         at com.alibaba.otter.canal.client.impl.SimpleCanalConnector.readNextPacket(SimpleCanalConnector.java:412) ~[na:na]
@@ -186,9 +188,10 @@ java.lang.NoSuchMethodError: java.nio.ByteBuffer.clear()Ljava/nio/ByteBuffer;
 ```
 在主配置中统一修改集群下的服务端deployer的配置文件，也可以统一的查看集群下的服务端实例。  
 在【Instance管理】中新增一个实例，也就是我们之前在服务端的conf文件夹下配置的，每一个子文件夹就代表了一个实例，每个实例都有自己的instance.properties配置文件，这里新增的实例就是这个配置文件：
-![图](../../assets/imgs/springclound/2443180-20230617161755897-1610821710.png)  
-![图](../../assets/imgs/springclound/2443180-20230617223534222-875201162.png)  
+![图](../../assets/imgs/springcloud/2443180-20230617161755897-1610821710.png)  
+![图](../../assets/imgs/springcloud/2443180-20230617223534222-875201162.png)  
 在使用canal进行数据库日志获取的时候，第一次获取需要获取全量日志。在instance.properties中是可以进行配置的。其中：
+
 >canal.instance.master.journal.name  
 canal.instance.master.position  
 canal.instance.master.timestamp  
@@ -244,7 +247,7 @@ canal.mq.partition=0
 #canal.mq.partitionHash=test.table:id^name,.*\\..*
 ```
 点击"操作-启动"就可以启用该实例
-![图](../../assets/imgs/springclound/2443180-20230617214517297-1290451872.png)
+![图](../../assets/imgs/springcloud/2443180-20230617214517297-1290451872.png)
 
 ## 客户端adapter配置
 针对客户端adapter，admin是不做管理的，如上我们配置了一个cluster的实例，如果要实现数据同步，我们还需要配置该实例对应的客户端来将该数据同步到目标数据源。

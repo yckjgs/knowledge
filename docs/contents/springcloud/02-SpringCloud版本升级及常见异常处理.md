@@ -7,13 +7,13 @@ Nacos：客户端适配版本为2.2.1-RC。 该版本是Nacos社区基于最新2
 除了组件升级，还修复了之前版本存在的一些问题，进一步提升了Spring Cloud Alibaba的稳定性和健壮性。 更多信息请参考本版本相关发布公告。
 ## 一、查看推荐版本及组件版本
 ### 1.1、[SpringCloud官方文档](https://spring.io/projects/spring-cloud)
-![查看版本](../../assets/imgs/springclound/9c6dd8276b0444878712f7f4c14b8813.png)
+ ![查看版本](../../assets/imgs/springcloud/9c6dd8276b0444878712f7f4c14b8813.png)
 ### 1.2、[Spring Cloud Alibaba Wiki文档](https://github.com/alibaba/spring-cloud-alibaba/wiki)
 Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。此项目包含开发分布式应用服务的必需组件，方便开发者通过 Spring Cloud 编程模型轻松使用这些组件来开发分布式应用服务。依托 Spring Cloud Alibaba，您只需要添加一些注解和少量配置，就可以将 Spring Cloud 应用接入阿里分布式应用解决方案，通过阿里中间件来迅速搭建分布式应用系统。
 #### 1.2.1、毕业版本依赖关系(推荐使用)
-![毕业版本依赖关系](../../assets/imgs/springclound/b06bf703f43c453b85532ebe86845640.png)
+ ![毕业版本依赖关系](../../assets/imgs/springcloud/b06bf703f43c453b85532ebe86845640.png)
 #### 1.2.2、组件版本关系
-![在这里插入图片描述](../../assets/imgs/springclound/fccbdee9449e431bba7443485e823598.png)
+ ![在这里插入图片描述](../../assets/imgs/springcloud/fccbdee9449e431bba7443485e823598.png)
 ### 1.3、[Maven仓库官网](https://mvnrepository.com/)|[JAR仓库官网](https://repo1.maven.org/maven2/)
 ## 二、升级异常问题处理
 ### 2.1、Servlet版本变更
@@ -81,7 +81,7 @@ public class CorsConfig implements WebMvcConfigurer {
 ### 2.6、分页PageHelper设置
 1、问题描述
 Springboot配置分页PageHelper出现Error creating bean with name 'com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration'
-![在这里插入图片描述](../../assets/imgs/springclound/b9833b4c11564274a18fda1bf6ae9e07.png)
+![在这里插入图片描述](../../assets/imgs/springcloud/b9833b4c11564274a18fda1bf6ae9e07.png)
 
 2、问题原因
 springboot在版本2点几进行配置pageHelper会报错，原因是springboot2.6+版本默认禁止循环依赖

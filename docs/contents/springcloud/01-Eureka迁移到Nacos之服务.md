@@ -2,14 +2,15 @@
 ### 1.1  Nacos 服务端下载
 下载地址：https://github.com/alibaba/nacos/releases
 
-![Nacos下载](../../assets/imgs/springclound/4076d7d52e794cc3b41a3246543f0c68.png)
+ ![Nacos下载](../../assets/imgs/springcloud/4076d7d52e794cc3b41a3246543f0c68.png)
 ### 1.2 初始化数据库
 在Navicat创建nacos库并执行sql脚本/nacos/conf下nacos-mysql.sql脚本
 
-![创建数据库执行SQL](../../assets/imgs/springclound/44251c938b204d18b632fe99ec806bcb.png)
+ ![创建数据库执行SQL](../../assets/imgs/springcloud/44251c938b204d18b632fe99ec806bcb.png)
 
 修改Nacos配置文件，在application.properties中取消注释并修改数据库信息为实际的数据库信息后保存。其他nacos服务实例也需要做同样的修改。
-![配置文件](../../assets/imgs/springclound/e72fe2f8ec264f9abf8e69fed183d721.png)
+ ![配置文件](../../assets/imgs/springcloud/e72fe2f8ec264f9abf8e69fed183d721.png)
+
 ### 1.3 Nacos 单例启动
 单实例部署不适合生产环境，单点故障是致命的。
 单实例非集群模式启动命令：```startup.sh -m standalone ```
@@ -30,8 +31,9 @@
 ```
 ## 三、将配置文件迁移Nacos中
 先在Nacos中创建命名空间，命名空间ID及命名空间以mcs为例，然后进行项目各服务模块配置文件设置：
-![配置项目文件](../../assets/imgs/springclound/ba89ce66907445408bb43d1ada2ec598.png)
+![配置项目文件](../../assets/imgs/springcloud/ba89ce66907445408bb43d1ada2ec598.png)
 配置文件改为bootstrap.yml并修改配置文件如下：
+
 ```javascript
 spring:
   application:
@@ -50,8 +52,8 @@ spring:
         prefix: ${spring.application.name}
         file-extension: yaml #指定yaml格式的配置
         group: DEFAULT_GROUP
-  ```
-  
+```
+
 先根据spring.cloud.nacos.server-addr获取nacos地址，再根据作为文件id```(mcs-content-dev.yaml)```来读取配置。
 其实微服务启动时，会去nacos读取多个配置文件，例如：
 [spring.application.name]-[spring.profiles.active].yaml，例如：mcs-content-dev.yaml
@@ -74,7 +76,7 @@ spring:
 最终的目的，是修改nacos中的配置后，微服务中无需重启即可让配置生效，也就是配置热更新。
 要实现配置热更新，可以使用两种方式
 ①在@Value注入的变量所在类上添加注解@RefreshScope：
-![热部署配置一](../../assets/imgs/springclound/7f0fae48608a40d9a8a9378c411797c8.png)
+ ![热部署配置一](../../assets/imgs/springcloud/7f0fae48608a40d9a8a9378c411797c8.png)
 
 ②使用@ConfigurationProperties注解代替@Value注解。
 在mcs-content服务中，添加一个类，读取patterrn.dateformat属性：
@@ -90,6 +92,6 @@ public class PatternProperties {
     private String dateFormat;
 }
 ```
-![热部署配置二](../../assets/imgs/springclound/1539367caadd43fbbc4c1d2f46f460da.png)
+ ![热部署配置二](../../assets/imgs/springcloud/1539367caadd43fbbc4c1d2f46f460da.png)
 
 根据上述的两种方式都可以达到nacos配置修改热部署的效果，因为@Value需要配置@RefreshScope才可以实现效果，而@ConfigurationProperties就可以达到相同的效果，则推荐使用方式二。
